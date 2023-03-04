@@ -34,12 +34,14 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     formik.handleChange(event);
 
     const zipCode = event.target.value;
-    const address = [...(_.cloneDeep(zipcodeJa)[zipCode]?.address ?? [])];
-    const prefecture = address.shift();
-    const city = address.join(' ');
-
-    formik.setFieldValue('prefecture', prefecture);
-    formik.setFieldValue('city', city);
+    if (zipCode.length === 7) {
+      const address = [...(_.cloneDeep(zipcodeJa)[zipCode]?.address ?? [])];
+      const prefecture = address.shift();
+      const city = address.join(' ');
+      
+      formik.setFieldValue('prefecture', prefecture);
+      formik.setFieldValue('city', city);
+    }
   };
 
   return (
