@@ -1,5 +1,4 @@
 import { useFormik } from 'formik';
-import _ from 'lodash';
 import type { ChangeEventHandler, FC } from 'react';
 import zipcodeJa from 'zipcode-ja';
 
@@ -35,7 +34,7 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
 
     const zipCode = event.target.value;
     if (zipCode.length === 7) {
-      const address = [...(_.cloneDeep(zipcodeJa)[zipCode]?.address ?? [])];
+      const address = [...zipcodeJa[zipCode]?.address ?? []];
       const prefecture = address.shift();
       const city = address.join(' ');
       
