@@ -50,7 +50,7 @@ export const ProductPurchaseSection: FC<Props> = memo(
       <div className={styles.container()}>
         <p className={styles.amount()}>
           <span className={styles.checkIcon()}>
-            <Icon color="#3BA175" height={18} type="FaCheckCircle" width={18} />
+            <Icon color="#3BA175" height={18} icon="circle-cheeck-solid" width={18} />
           </span>
           <span>{amountInCart}個 カートに追加済み</span>
         </p>

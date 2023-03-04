@@ -22,7 +22,7 @@ export const Header: FC = () => {
       {isAuthUser ? (
         <Anchor data-testid="navigate-order" href={'/order'}>
           <div className={styles.orderLink()}>
-            <Icon color="#222222" height={20} type="FaShoppingCart" width={20} />
+            <Icon color="#222222" height={20} icon="cart-shopping-solid" width={20} />
           </div>
         </Anchor>
       ) : (
@@ -31,7 +31,7 @@ export const Header: FC = () => {
           data-testid="navigate-signin"
           onClick={() => handleOpenModal('SIGN_IN')}
         >
-          <Icon color="#222222" height={20} type="FaUser" width={20} />
+          <Icon color="#222222" height={20} icon="user-solid" width={20} />
         </button>
       )}
     </header>
