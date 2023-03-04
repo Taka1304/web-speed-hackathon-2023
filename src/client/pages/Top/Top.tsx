@@ -12,14 +12,11 @@ export const Top: FC = () => {
   const { recommendation } = useRecommendation();
   const { features } = useFeatures();
 
-  if (recommendation === undefined || features === undefined) {
-    return null;
-  }
   document.title = "買えるオーガニック"
   return (
     <Layout>
       <div>
-        <ProductHeroImage product={recommendation.product} title="今週のオススメ" />
+        {recommendation && <ProductHeroImage product={recommendation.product} title="今週のオススメ" />}
 
         <div className={styles.featureList()}>
           {features.map((featureSection) => {
