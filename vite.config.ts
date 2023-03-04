@@ -9,8 +9,6 @@ import wasm from 'vite-plugin-wasm';
 
 import { getFileList } from './tools/get_file_list';
 
-
-
 const publicDir = path.resolve(__dirname, './public');
 const getPublicFileList = async (targetPath: string) => {
   const filePaths = await getFileList(targetPath);
@@ -23,7 +21,6 @@ const getPublicFileList = async (targetPath: string) => {
 
 export default defineConfig(async () => {
   const videos = await getPublicFileList(path.resolve(publicDir, 'videos'));
-
   return {
     build: {
       assetsInlineLimit: 20480,

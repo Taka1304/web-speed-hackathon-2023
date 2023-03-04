@@ -12,8 +12,6 @@ type Props = {
 
 export const Icon: FC<Props> = ({ color, height, icon, width }) => {
   return (
-    <span className={classNames(styles.container({ color, height, width }))}>
-      <img src={`/icons/${icon}.svg`} />
-    </span>
+    <img className={classNames(styles.container({ color, height, width }))} src={`/icons/${icon}.svg`} />
   );
 };

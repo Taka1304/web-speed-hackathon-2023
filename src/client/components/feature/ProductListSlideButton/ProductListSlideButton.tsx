@@ -27,9 +27,9 @@ export const ProductListSlideButton: FC<Props> = ({ arrowType, disabled, onClick
       onClick={onClick}
     >
       {arrowType === ArrowType.LEFT ? (
-        <Icon color="#222222" height={16} icon="FaArrowLeft" width={16} />
+        <Icon color="#222222" height={16} icon="arrow-left-solid" width={16} />
       ) : (
-        <Icon color="#222222" height={16} icon="FaArrowRight" width={16} />
+        <Icon color="#222222" height={16} icon="arrow-right-solid" width={16} />
       )}
     </button>
   );
