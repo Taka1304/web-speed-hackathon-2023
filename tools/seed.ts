@@ -1,7 +1,7 @@
 import path from 'node:path';
 
 import { Temporal } from '@js-temporal/polyfill';
-import * as bcrypt from 'bcrypt';
+import { hash } from 'bcrypt';
 
 import { FeatureItem } from '../src/model/feature_item';
 import { FeatureSection } from '../src/model/feature_section';
@@ -159,7 +159,7 @@ async function seedUsers({ mediaList }: { mediaList: MediaFile[] }): Promise<Use
   for (const familyName of familyNames) {
     for (const givenName of givenNames) {
       const asciiName = `${familyName.name}_${givenName.name}`;
-      const password = await bcrypt.hash(asciiName, 10);
+      const password = await hash(asciiName, 10);
 
       const user = new User();
       user.email = `${asciiName}@example.com`;
