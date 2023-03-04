@@ -134,7 +134,7 @@ async function seedMediaFiles(): Promise<MediaFile[]> {
   const files = (await Promise.all([await getFileList(imageDir), await getFileList(videoDir)])).flat();
   const filenames = files.map((file) => {
     const relativePath = path.relative(publicDir, file);
-    return '/' + relativePath;
+    return '\\' + relativePath;
   });
   const mediaList: MediaFile[] = [];
 
@@ -152,7 +152,7 @@ async function seedMediaFiles(): Promise<MediaFile[]> {
 async function seedUsers({ mediaList }: { mediaList: MediaFile[] }): Promise<User[]> {
   let index = 1;
 
-  const avatars = mediaList.filter((m) => m.filename.includes('/avatars/'));
+  const avatars = mediaList.filter((m) => m.filename.includes('\\avatars\\'));
   const users: User[] = [];
   const profiles: Profile[] = [];
 
@@ -171,7 +171,6 @@ async function seedUsers({ mediaList }: { mediaList: MediaFile[] }): Promise<Use
       profile.avatar = avatars[index % avatars.length];
       profile.user = user;
       profiles.push(profile);
-
       index++;
     }
   }
@@ -192,11 +191,10 @@ async function seedProducts({ mediaList }: { mediaList: MediaFile[] }): Promise<
   for (const familyName of familyNames) {
     for (const farmName of farmNames) {
       for (const vegetableFruitName of vegetableFruitNames) {
-        const vegetableFruitImages = mediaList.filter((m) =>
-          m.filename.includes(`/products/${vegetableFruitName.name}/`),
-        );
-        const videos = mediaList.filter((m) => m.filename.includes('/videos/'));
-
+        const vegetableFruitImages = mediaList.filter((m) => (
+          m.filename.includes(`${vegetableFruitName.name}`)
+        ));
+        const videos = mediaList.filter((m) => m.filename.includes('videos'));
         const productMediaList: ProductMedia[] = [];
 
         for (let i = 0; i < vegetableFruitImages.length; i++) {
