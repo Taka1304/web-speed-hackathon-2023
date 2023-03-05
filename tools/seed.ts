@@ -192,9 +192,9 @@ async function seedProducts({ mediaList }: { mediaList: MediaFile[] }): Promise<
     for (const farmName of farmNames) {
       for (const vegetableFruitName of vegetableFruitNames) {
         const vegetableFruitImages = mediaList.filter((m) => (
-          m.filename.includes(`${vegetableFruitName.name}`)
+          m.filename.includes(`\\${vegetableFruitName.name}\\`)
         ));
-        const videos = mediaList.filter((m) => m.filename.includes('videos'));
+        const videos = mediaList.filter((m) => m.filename.includes('\\videos\\'));
         const productMediaList: ProductMedia[] = [];
 
         for (let i = 0; i < vegetableFruitImages.length; i++) {
