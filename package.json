@@ -48,6 +48,7 @@
     "sqlite3": "5.1.4",
     "throttle-debounce": "5.0.0",
     "typeorm": "0.3.11",
+    "vite-plugin-compression": "0.5.1",
     "vite-plugin-ejs": "1.6.4"
   },
   "devDependencies": {
