@@ -83,6 +83,7 @@ export const SignUpModal: FC = () => {
               id="email"
               label="メールアドレス"
               onChange={formik.handleChange}
+              pattern="email"
               placeholder="メールアドレスを入力"
               type="email"
               value={formik.values.email}
@@ -105,6 +106,7 @@ export const SignUpModal: FC = () => {
               id="password"
               label="パスワード"
               onChange={formik.handleChange}
+              pattern="password"
               placeholder="パスワードを入力"
               type="password"
               value={formik.values.password}
