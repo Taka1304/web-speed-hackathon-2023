@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Helmet } from 'react-helmet';
 
 import { Layout } from '../../components/application/Layout';
 import { ProductList } from '../../components/feature/ProductList';
@@ -12,23 +13,27 @@ export const Top: FC = () => {
   const { recommendation } = useRecommendation();
   const { features } = useFeatures();
 
-  document.title = "買えるオーガニック"
   return (
-    <Layout>
-      <div>
-        {recommendation && <ProductHeroImage product={recommendation.product} title="今週のオススメ" />}
+    <>
+      <Helmet>
+      買えるオーガニック
+      </Helmet>
+      <Layout>
+        <div>
+          {recommendation && <ProductHeroImage product={recommendation.product} title="今週のオススメ" />}
 
-        <div className={styles.featureList()}>
-          {features.map((featureSection) => {
-            return (
-              <div key={featureSection.id} className={styles.feature()}>
-                <h2 className={styles.featureHeading()}>{featureSection.title}</h2>
-                <ProductList featureSection={featureSection} />
-              </div>
-            );
-          })}
+          <div className={styles.featureList()}>
+            {features.map((featureSection) => {
+              return (
+                <div key={featureSection.id} className={styles.feature()}>
+                  <h2 className={styles.featureHeading()}>{featureSection.title}</h2>
+                  <ProductList featureSection={featureSection} />
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 };
