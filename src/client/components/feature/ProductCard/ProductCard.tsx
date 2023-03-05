@@ -1,8 +1,8 @@
-import { format } from 'currency-formatter';
 import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
+import { format } from '../../../utils/format_price_jpn';
 import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
 import { Image } from '../../foundation/Image';
@@ -19,6 +19,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
   const { activeOffer } = useActiveOffer(product);
   const price = activeOffer?.price ?? product.price;
+  console.log(price)
 
   return (
     <Anchor href={`/product/${product.id}`}>
@@ -32,7 +33,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         ) : null}
         <div className={styles.description()}>
           <p className={styles.itemName()}>{product.name}</p>
-          <span className={styles.itemPrice()}>{format(price, { code: 'JPY', precision: 0 })}</span>
+          <span className={styles.itemPrice()}>{format(price)}</span>
         </div>
         {activeOffer !== undefined && (
           <div className={styles.label()}>

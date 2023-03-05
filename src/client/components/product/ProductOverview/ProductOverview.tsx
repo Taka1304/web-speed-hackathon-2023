@@ -1,8 +1,8 @@
-import * as currencyFormatter from 'currency-formatter';
 import type { FC } from 'react';
 import { memo } from 'react';
 
 import type { LimitedTimeOfferFragmentResponse, ProductFragmentResponse } from '../../../graphql/fragments';
+import { format } from '../../../utils/format_price_jpn';
 import { ProductOfferLabel } from '../ProductOfferLabel';
 
 import * as styles from './ProductOverview.styles';
@@ -49,11 +49,11 @@ export const ProductOverview: FC<Props> = memo(({ activeOffer, product }) => {
       <div className={styles.priceWrapper()}>
         {activeOffer !== undefined ? (
           <span className={styles.priceWithoutOffer()}>
-            {currencyFormatter.format(product.price, { code: 'JPY', precision: 0 })}
+            {format(product.price)}
           </span>
         ) : null}
         <span className={styles.price()}>
-          {currencyFormatter.format(activeOffer?.price ?? product.price, { code: 'JPY', precision: 0 })}
+          {format(activeOffer?.price ?? product.price)}
         </span>
       </div>
     </div>

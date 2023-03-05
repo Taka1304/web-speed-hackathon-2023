@@ -37,10 +37,8 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
       .then(res => res.json())
       .then(data => {
         if (data.results) {
-          const prefecture: string = data.results[0].address1;
-          const city: string = data.results[0].address2 + data.results[0].address3
-          formik.setFieldValue('prefecture', prefecture);
-          formik.setFieldValue('city', city);
+          formik.setFieldValue('prefecture', data.results[0].address1);
+          formik.setFieldValue('city', `${data.results[0].address2}${data.results[0].address3}`);
         }
       })
     }

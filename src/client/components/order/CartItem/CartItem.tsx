@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import * as currencyFormatter from 'currency-formatter';
 import type { ChangeEventHandler, FC } from 'react';
 
 import type { ShoppingCartItemFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
+import { format } from '../../../utils/format_price_jpn';
 import { normalizeCartItemCount } from '../../../utils/normalize_cart_item';
 import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
@@ -63,7 +63,7 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
                   <div className={styles.details()}>
                     <p className={styles.itemName()}>{item.product.name}</p>
                     <p className={styles.itemPrice()}>
-                      {currencyFormatter.format(price, { code: 'JPY', precision: 0 })}
+                      {format(price)}
                     </p>
                   </div>
                 </div>
