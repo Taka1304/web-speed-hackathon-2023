@@ -11,8 +11,8 @@ import { TextInput } from '../../foundation/TextInput';
 
 import * as styles from './SignUpModal.styles';
 
-const NOT_INCLUDED_AT_CHAR_REGEX = /^(?:[^@]*){6,}$/;
-const NOT_INCLUDED_SYMBOL_CHARS_REGEX = /^(?:(?:[a-zA-Z0-9]*){2,})+$/;
+// const NOT_INCLUDED_AT_CHAR_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const NOT_INCLUDED_SYMBOL_CHARS_REGEX = /^(?=.*[!@#$%^&*()_+=[{\]};:<>|./?,-]).{1,}$/;
 
 export type SignUpForm = {
   email: string;
@@ -52,10 +52,10 @@ export const SignUpModal: FC = () => {
     },
     validate(values) {
       const errors: FormikErrors<SignUpForm> = {};
-      if (values.email != '' && NOT_INCLUDED_AT_CHAR_REGEX.test(values.email)) {
+      if (values.email != '' && !values.email.includes("@")) {
         errors['email'] = 'メールアドレスの形式が間違っています';
       }
-      if (values.password != '' && NOT_INCLUDED_SYMBOL_CHARS_REGEX.test(values.password)) {
+      if (values.password != '' && !NOT_INCLUDED_SYMBOL_CHARS_REGEX.test(values.password)) {
         errors['password'] = '英数字以外の文字を含めてください';
       }
       return errors;
