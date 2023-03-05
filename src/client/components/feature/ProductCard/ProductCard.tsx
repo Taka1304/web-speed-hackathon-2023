@@ -19,7 +19,6 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
   const { activeOffer } = useActiveOffer(product);
   const price = activeOffer?.price ?? product.price;
-  console.log(price)
 
   return (
     <Anchor href={`/product/${product.id}`}>
